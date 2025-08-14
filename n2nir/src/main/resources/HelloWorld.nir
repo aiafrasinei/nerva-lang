@@ -1,0 +1,140 @@
+{
+    "name" : "src/main/resources/If.n"
+    "data" : [
+            {
+                "name" : "i_i"
+                "type" : "Var"
+                "data" : "3"
+            }
+        {
+            "name" : "if"
+            "type" : "FunctCall"
+            "inputs" : [
+                {
+                    "name" : ""
+                    "type" : "Var"
+                    "data" : "i"
+                },
+                {
+                    "name" : ""
+                    "type" : "Var"
+                    "data" : "<"
+                },
+                {
+                    "name" : ""
+                    "type" : "Var"
+                    "data" : "10"
+                }
+            ],
+            "outputs" : [
+            ]
+        }
+        {
+            "name" : ""
+            "type" : "FunctCall"
+            "inputs" : [
+                {
+                    "name" : ""
+                    "type" : "Var"
+                    "data" : ""
+                },
+                {
+                    "name" : ""
+                    "type" : "Var"
+                    "data" : ""
+                },
+                {
+                    "name" : ""
+                    "type" : "Var"
+                    "data" : "println"
+                },
+                {
+                    "name" : ""
+                    "type" : "Var"
+                    "data" : "Less then 10"
+                }
+            ],
+            "outputs" : [
+            ]
+        }
+        {
+            "name" : "elseif"
+            "type" : "FunctCall"
+            "inputs" : [
+                {
+                    "name" : ""
+                    "type" : "Var"
+                    "data" : "i"
+                },
+                {
+                    "name" : ""
+                    "type" : "Var"
+                    "data" : "<"
+                },
+                {
+                    "name" : ""
+                    "type" : "Var"
+                    "data" : "5"
+                }
+            ],
+            "outputs" : [
+            ]
+        }
+        {
+            "name" : ""
+            "type" : "FunctCall"
+            "inputs" : [
+                {
+                    "name" : ""
+                    "type" : "Var"
+                    "data" : ""
+                },
+                {
+                    "name" : ""
+                    "type" : "Var"
+                    "data" : ""
+                },
+                {
+                    "name" : ""
+                    "type" : "Var"
+                    "data" : "println"
+                },
+                {
+                    "name" : ""
+                    "type" : "Var"
+                    "data" : "Less then 5"
+                }
+            ],
+            "outputs" : [
+            ]
+        }
+        {
+            "name" : ""
+            "type" : "FunctCall"
+            "inputs" : [
+                {
+                    "name" : ""
+                    "type" : "Var"
+                    "data" : ""
+                },
+                {
+                    "name" : ""
+                    "type" : "Var"
+                    "data" : ""
+                },
+                {
+                    "name" : ""
+                    "type" : "Var"
+                    "data" : "println"
+                },
+                {
+                    "name" : ""
+                    "type" : "Var"
+                    "data" : "Greater then 10"
+                }
+            ],
+            "outputs" : [
+            ]
+        }
+    ]
+}

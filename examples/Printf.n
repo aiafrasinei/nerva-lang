@@ -1,2 +1,2 @@
-printf ,Decimals: %d %ld\n, 1977 650000L
-printf ,floats: %4.2f %+.0e %E \n, 3.1416 3.1416 3.1416
+printf "Decimals: %d %ld\n" 1977 650000L
+printf "floats: %4.2f %+.0e %E \n" 3.1416 3.1416 3.1416

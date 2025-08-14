@@ -1,28 +1,32 @@
 # VARIABLES
 
-= is the assignment operator
+## declarations
 
-# declaration
+```nerva
+com_i
 
-    com_i
-    
-    id_i = 330
+id_i = 330
 
-# assignement
+id = 330
 
-    id = 330
+id = "text"
 
-    id = "text"
+a_i
 
-    a_i
+a = 3
 
-    a = 3
+nr_r = 0.1
 
-    a = a + 1
+a = a + 1
 
-# camel case
+hello = "Hello World!"
+```
 
+## camel case
+
+```nerva
 newVariable = 0
+```
 
-# notes
+## notes
 _ cant be used in variable name (just type definition)
