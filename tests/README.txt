@@ -1,1 +1,1 @@
-./bats/bin/bats nervat.bats
+./bats/bin/bats n2nir.bats

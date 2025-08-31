@@ -1,46 +1,54 @@
 # NERVA INTERMEDIATE REPRESENTATION (NIR)
 
 
-PROGRAM
+## PROGRAM
+
 ```json
 {
     "name" : "",
+    "blocktype" : "Program",
     "data" : []
 }
 ```
 
-BLOCK
+## BLOCK
+
 ```json
 {
-    
+    "name" : "",
+    "blocktype" : "Block",
 }
 ```
 
-VARIABLE DECLARATION, ASSIGNMENT , FUNCTION CALL PARAMETER
+## VARIABLE DECLARATION, ASSIGNMENT , FUNCTION CALL PARAMETER
+
 ```json
 {
     "name" : "name",
-    "type" : "Var",
+    "blocktype" : "Var",
+    "datatype" : "",
     "data" : {}
 }
 ```
 
-FUNCTION DECLARATION
+## FUNCTION DECLARATION
+
 ```json
 {
     "name" : "",
-    "type"  : "FunctDef",
+    "blocktype"  : "FunctDef",
     "inputs" : [],
     "outputs" : [],
     "code" : []
 }
 ```
 
-FUNCTION CALL
+## FUNCTION CALL
+
 ```json
 {
     "name" : "",
-    "type"  : "FunctCall",
+    "blocktype"  : "FunctCall",
     "inputs" : [],
     "outputs" : []
 }

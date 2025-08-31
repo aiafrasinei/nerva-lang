@@ -1,3 +1,0 @@
-sum_r = . a_r . b_r ,
-    ret a + b
-;

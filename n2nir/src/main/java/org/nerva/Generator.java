@@ -6,84 +6,91 @@ import java.util.List;
 import static org.nerva.ParserUtils.*;
 
 public class Generator {
-    public static int indentLevel = 0;
+    public static int globalIndentLevel = 0;
 
     public static void genProgramStart(PrintWriter outp, String inf) {
-        outp.printf("%s{\n", indentString(indentLevel));
-        indentLevel++;
-        outp.printf("%s\"name\" : \"%s\"\n" , indentString(indentLevel), inf);
-        outp.printf("%s\"data\" : [\n", indentString(indentLevel));
-        indentLevel++;
+        outp.printf("%s{\n", indentString(globalIndentLevel));
+        globalIndentLevel++;
+        outp.printf("%s\"name\" : \"%s\",\n" , indentString(globalIndentLevel), inf);
+        outp.printf("%s\"data\" : [\n", indentString(globalIndentLevel));
+        globalIndentLevel++;
     }
 
     public static void genProgramEnd(PrintWriter outp) {
-        indentLevel--;
-        outp.printf("%s]\n", indentString(indentLevel));
+        globalIndentLevel--;
+        outp.printf("%s]\n", indentString(globalIndentLevel));
         outp.println("}");
         outp.close();
     }
 
+    public static void genBlockStart(PrintWriter outp, int indentLevel) {
+        outp.printf("%s{\n", indentString(indentLevel));
+    }
+
+    public static void genBlockEnd(PrintWriter outp, int indentLevel) {
+        outp.printf("%s}\n", indentString(indentLevel));
+    }
+
     /*{
         "name" : "name",
-        "type" : "Var",
+        "blocktype" : "Var",
+        "datatype" : "type"
         "data" : {}
     }*/
-    public static void genVar(PrintWriter outp, String name, String data, boolean last) {
-        indentLevel++;
+    public static void genVar(PrintWriter outp, String name, String data, int indentLevel) {
         outp.printf("%s{\n", indentString(indentLevel));
         indentLevel++;
-        outp.printf("%s\"name\" : \"%s\"\n" , indentString(indentLevel), name);
-        outp.printf("%s\"type\" : \"%s\"\n" , indentString(indentLevel), "Var");
+        outp.printf("%s\"name\" : \"%s\",\n" , indentString(indentLevel), name);
+        outp.printf("%s\"blocktype\" : \"%s\",\n" , indentString(indentLevel), "Var");
+        outp.printf("%s\"datatype\" : \"%s\",\n" , indentString(indentLevel), "Var");
         outp.printf("%s\"data\" : \"%s\"\n" , indentString(indentLevel), data);
-        indentLevel--;
-        if(last)
-            outp.printf("%s}\n", indentString(indentLevel));
-        else
-            outp.printf("%s},\n", indentString(indentLevel));
-        indentLevel--;
-    }
-
-    /*{
-        "name" : "",
-        "type" : "Var",
-        "data" : {}
-    }*/
-    public static void genFunctCallParam(PrintWriter outp, String data, boolean last) {
-        genVar(outp, "", data, last);
-    }
-
-    /*{
-        "name" : "",
-        "type"  : "FunctDef",
-        "inputs" : [],
-        "outputs" : [],
-        "code" : []
-    }*/
-    public static void genFunctDef(PrintWriter outp, N2nir.LineData data) {
-        outp.printf("%s{\n", indentString(indentLevel));
-        indentLevel++;
-        outp.printf("%s\"name\" : \"%s\"\n" , indentString(indentLevel), data.tokens.getFirst());
-        outp.printf("%s\"type\" : \"%s\"\n" , indentString(indentLevel), "FunctDef");
         indentLevel--;
         outp.printf("%s}\n", indentString(indentLevel));
     }
 
     /*{
         "name" : "",
-        "type"  : "FunctCall",
+        "blocktype" : "Var",
+        "data" : {}
+    }*/
+    public static void genFunctCallParam(PrintWriter outp, String data, int indentLevel) {
+        genVar(outp, "", data, indentLevel);
+    }
+
+    /*{
+        "name" : "",
+        "blocktype" : "FunctDef",
+        "inputs" : [],
+        "outputs" : [],
+        "code" : []
+    }*/
+    public static void genFunctDef(PrintWriter outp, N2nir.LineData data, int indentLevel) {
+        outp.printf("%s{\n", indentString(indentLevel));
+        indentLevel++;
+        outp.printf("%s\"name\" : \"%s\",\n" , indentString(indentLevel), data.tokens.getFirst());
+        outp.printf("%s\"blocktype\" : \"%s\",\n" , indentString(indentLevel), "FunctDef");
+        indentLevel--;
+        outp.printf("%s},\n", indentString(indentLevel));
+    }
+
+    /*{
+        "name" : "",
+        "blocktype"  : "FunctCall",
         "inputs" : [],
         "outputs" : []
     }*/
-    public static void genFunctCall(PrintWriter outp, N2nir.LineData data, String name) {
+    public static void genFunctCall(PrintWriter outp, N2nir.LineData data, String name, int indentLevel) {
         outp.printf("%s{\n", indentString(indentLevel));
         indentLevel++;
-        outp.printf("%s\"name\" : \"%s\"\n" , indentString(indentLevel), name);
-        outp.printf("%s\"type\" : \"%s\"\n" , indentString(indentLevel), "FunctCall");
+        outp.printf("%s\"name\" : \"%s\",\n" , indentString(indentLevel), name);
+        outp.printf("%s\"blocktype\" : \"%s\",\n" , indentString(indentLevel), "FunctCall");
         outp.printf("%s\"inputs\" : [\n", indentString(indentLevel));
 
+        indentLevel++;
         for(int i=1;i<data.tokens.size(); i++) {
-            genFunctCallParam(outp, data.tokens.get(i), i == data.tokens.size() - 1);
+            genFunctCallParam(outp, data.tokens.get(i), indentLevel);
         }
+        indentLevel--;
 
         outp.printf("%s],\n", indentString(indentLevel));
         outp.printf("%s\"outputs\" : [\n", indentString(indentLevel));
@@ -92,43 +99,47 @@ public class Generator {
         outp.printf("%s}\n", indentString(indentLevel));
     }
 
-    public static void genFunctCall(PrintWriter outp, N2nir.LineData data) {
-        genFunctCall(outp, data, data.tokens.getFirst());
+    public static void genFunctCall(PrintWriter outp, N2nir.LineData data, int indentLevel) {
+        genFunctCall(outp, data, data.tokens.getFirst(), indentLevel);
     }
 
-    public static void genVarAssignment(PrintWriter outp, N2nir.LineData data) {
-        genVar(outp, data.tokens.getFirst(), data.tokens.get(2), true);
+    public static void genVarAssignment(PrintWriter outp, N2nir.LineData data, int indentLevel) {
+        genVar(outp, data.tokens.getFirst(), data.tokens.get(2), indentLevel);
     }
 
-    public static void genIf(PrintWriter outp, N2nir.LineData data) {
-
-    }
-
-    public static void genFunctionDeclaration(PrintWriter outp, N2nir.LineData data) {
+    public static void genIf(PrintWriter outp, N2nir.LineData data, int indentLevel) {
 
     }
 
-    public static void genVar(PrintWriter outp, N2nir.LineData data, boolean last) {
+    public static void genFunctionDeclaration(PrintWriter outp, N2nir.LineData data, int indentLevel) {
         String firstToken = data.tokens.getFirst();
-        int underscoreIndex = firstToken.indexOf('_');
-        char annotationChar = getAnnotationChar(firstToken);
-        if (isTypeAnnotation(annotationChar)) {
-            genVar(outp, firstToken.substring(0, underscoreIndex), "0", last);
-        } else {
-            System.out.println("ERR - Wrong type annotation");
-        }
+        genBlockStart(outp, indentLevel);
+        outp.printf("%s{\n", indentString(indentLevel));
+        indentLevel++;
+        outp.printf("%s\"name\" : \"%s\"\n" , indentString(indentLevel), getVarName(firstToken));
+        outp.printf("%s\"blocktype\" : \"%s\"\n" , indentString(indentLevel), "FunctDef");
+        outp.printf("%s\"inputs\" : [\n", indentString(indentLevel));
+        outp.printf("%s],\n", indentString(indentLevel));
+        outp.printf("%s\"outputs\" : [\n", indentString(indentLevel));
+        outp.printf("%s]\n", indentString(indentLevel));
+        indentLevel--;
+        outp.printf("%s},\n", indentString(indentLevel));
+        genBlockEnd(outp, indentLevel);
     }
 
-    private static void genVar(PrintWriter outp, List<N2nir.LineData> linesData, N2nir.LineData data, int counter) {
-        String firstToken = data.tokens.getFirst();
-        if (firstToken.contains("_")) {
-            if(counter == linesData.size()-1) {
-                genVar(outp, data, true);
+    /*public static void genFunctCallParamVar(PrintWriter outp, String data, int indentLevel) {
+        if(data.contains("_")) {
+            int underscoreIndex = data.indexOf('_');
+            char annotationChar = getAnnotationChar(data);
+            if (isTypeAnnotation(annotationChar)) {
+                genVar(outp, data.substring(0, underscoreIndex), "0", indentLevel);
             } else {
-                genVar(outp, data, false);
+                System.out.println("ERR - Wrong blocktype annotation");
             }
+        } else {
+            genVar(outp, "", data, indentLevel);
         }
-    }
+    }*/
 
     static void genProgram(PrintWriter outp, List<N2nir.LineData> linesData) {
         int counter = -1;
@@ -137,21 +148,21 @@ public class Generator {
             counter++;
             String firstToken = data.tokens.getFirst();
             if(data.tokens.size() == 1) {
-                genVar(outp, linesData, data, counter);
+                genVar(outp, data.tokens.getFirst(), "", globalIndentLevel);
             } else {
                 if(data.tokens.get(1).equals("=")) {
                     if(firstToken.contains("_")) {
                         char annotationChar = getAnnotationChar(firstToken);
                         if(annotationChar == 'f') {
-                            genFunctionDeclaration(outp, data);
+                            genFunctionDeclaration(outp, data, globalIndentLevel);
                         } else {
-                            genVarAssignment(outp, data);
+                            genVarAssignment(outp, data, globalIndentLevel);
                         }
                     }
                 } else if (firstToken.equals("if")) {
-                    genIf(outp, data);
+                    genIf(outp, data, globalIndentLevel);
                 } else {
-                    genFunctCall(outp, data);
+                    genFunctCall(outp, data,globalIndentLevel);
                 }
             }
         }

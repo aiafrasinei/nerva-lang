@@ -1,6 +1,6 @@
 # LOOPS
 
-## for with index
+## just one type of for
 
 ```nerva
 for i_i=0 i<10 i++
@@ -8,21 +8,29 @@ for i_i=0 i<10 i++
 ;
 ```
 
-## for in tables
+## tables
 
 ```nerva
-for test_book books
+for i<books.length i++
 ;
 ```
 
-## while loop
+## infinite for
 
 ```nerva
 for
 ;
 ```
 
+## do for
+
+```nerva
+dofor i < 10
+;
+```
+
 ## return
+
 ```nerva
 ret
 ```

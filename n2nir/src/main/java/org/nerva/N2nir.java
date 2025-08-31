@@ -56,6 +56,7 @@ public class N2nir {
             //initialize linesData
             List<LineData> linesData = new ArrayList<>();
             for(String line : lines) {
+                line = line.trim();
                 linesData.add(new LineData(line, splitSpecial(line)));
             }
 

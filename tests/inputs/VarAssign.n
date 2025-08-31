@@ -1,0 +1,5 @@
+test_i
+test1_i = 2
+v1_r
+v2_r = 2.0
+str_s = "test test test"

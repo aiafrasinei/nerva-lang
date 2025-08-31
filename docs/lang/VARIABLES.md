@@ -29,4 +29,5 @@ newVariable = 0
 ```
 
 ## notes
+
 _ cant be used in variable name (just type definition)

@@ -1,10 +1,10 @@
 # nerva
 
-* nt - nerva transpiler
 * docs
   * lang - nerva docs
-  * nir - nerva intermediate representation
   * ndf - nerva data format
+  * nir - nerva intermediate representation
   * sqlite3 - sqlite3 info
 * examples
+* n2nir - convert nerva source to nir
 * tests

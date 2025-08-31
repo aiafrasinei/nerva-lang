@@ -1,0 +1,3 @@
+sum_f = . a_r . b_r ,
+    ret a + b
+;

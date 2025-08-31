@@ -1,3 +1,7 @@
 #!/bin/bash
 
-./bats/bin/bats nt.bats
+cd ../n2nir
+mvn clean install
+cd ..
+cd tests
+./bats/bin/bats n2nir.bats

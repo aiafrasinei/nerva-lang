@@ -38,7 +38,7 @@ public class ParserUtils {
 
     public static boolean isTypeAnnotation(char c) {
         boolean ret = false;
-        if(c == 's' || c == 'i' || c == 'r' || c == 't') {
+        if(c == 's' || c == 'i' || c == 'r' || c == 't' || c == 'f') {
             ret = true;
         }
         return ret;
@@ -47,5 +47,10 @@ public class ParserUtils {
     static char getAnnotationChar(String token) {
         int underscoreIndex = token.indexOf('_');
         return token.charAt(underscoreIndex + 1);
+    }
+
+    static String getVarName(String token) {
+        int underscoreIndex = token.indexOf('_');
+        return token.substring(0, underscoreIndex);
     }
 }

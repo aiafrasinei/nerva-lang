@@ -20,7 +20,7 @@ sum_f = , a_i b_i , _i ,
 ## function calls
 
 ```nerva
-main argv_a
+main argv
 sum , 2 3 ,
 ```
 
