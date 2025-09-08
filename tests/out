@@ -1,0 +1,207 @@
+{
+    "name" : "/home/aiaf/Projects/CURRENT/RESEARCH/LANGS/nerva-lang/tests/inputs/examples/fizzbuzz.n",
+    "data" : [
+        {
+            "name" : "fizzBuzz",
+            "blocktype" : "FunctDef",
+            "inputs" : [
+            ],
+            "outputs" : [
+            ]
+        },
+        {
+            "name" : "res",
+            "blocktype" : "Var",
+            "datatype" : "t",
+            "data" : ""
+        },
+        {
+            "name" : "for",
+            "blocktype" : "FunctCall",
+            "inputs" : [
+                {
+                    "name" : "",
+                    "blocktype" : "Var",
+                    "datatype" : "",
+                    "data" : "i_i=1"
+                },
+                {
+                    "name" : "",
+                    "blocktype" : "Var",
+                    "datatype" : "",
+                    "data" : "i<=n"
+                },
+                {
+                    "name" : "",
+                    "blocktype" : "Var",
+                    "datatype" : "",
+                    "data" : "i++"
+                }
+            ],
+            "outputs" : [
+            ]
+        },
+        {
+            "name" : "s",
+            "blocktype" : "Var",
+            "datatype" : "s",
+            "data" : ""
+        },
+        {
+            "name" : "if",
+            "blocktype" : "FunctCall",
+            "inputs" : [
+                {
+                    "name" : "",
+                    "blocktype" : "Var",
+                    "datatype" : "",
+                    "data" : "i"
+                },
+                {
+                    "name" : "",
+                    "blocktype" : "Var",
+                    "datatype" : "",
+                    "data" : "%"
+                },
+                {
+                    "name" : "",
+                    "blocktype" : "Var",
+                    "datatype" : "",
+                    "data" : "3"
+                },
+                {
+                    "name" : "",
+                    "blocktype" : "Var",
+                    "datatype" : "",
+                    "data" : "=="
+                },
+                {
+                    "name" : "",
+                    "blocktype" : "Var",
+                    "datatype" : "",
+                    "data" : "0"
+                }
+            ],
+            "outputs" : [
+            ]
+        },
+        {
+            "name" : "s.add",
+            "blocktype" : "FunctCall",
+            "inputs" : [
+                {
+                    "name" : "",
+                    "blocktype" : "Var",
+                    "datatype" : "",
+                    "data" : "Fizz"
+                }
+            ],
+            "outputs" : [
+            ]
+        },
+        {
+            "name" : "if",
+            "blocktype" : "FunctCall",
+            "inputs" : [
+                {
+                    "name" : "",
+                    "blocktype" : "Var",
+                    "datatype" : "",
+                    "data" : "i"
+                },
+                {
+                    "name" : "",
+                    "blocktype" : "Var",
+                    "datatype" : "",
+                    "data" : "%"
+                },
+                {
+                    "name" : "",
+                    "blocktype" : "Var",
+                    "datatype" : "",
+                    "data" : "5"
+                },
+                {
+                    "name" : "",
+                    "blocktype" : "Var",
+                    "datatype" : "",
+                    "data" : "=="
+                },
+                {
+                    "name" : "",
+                    "blocktype" : "Var",
+                    "datatype" : "",
+                    "data" : "0"
+                }
+            ],
+            "outputs" : [
+            ]
+        },
+        {
+            "name" : "s.add",
+            "blocktype" : "FunctCall",
+            "inputs" : [
+                {
+                    "name" : "",
+                    "blocktype" : "Var",
+                    "datatype" : "",
+                    "data" : "Buzz"
+                }
+            ],
+            "outputs" : [
+            ]
+        },
+        {
+            "name" : "if",
+            "blocktype" : "FunctCall",
+            "inputs" : [
+                {
+                    "name" : "",
+                    "blocktype" : "Var",
+                    "datatype" : "",
+                    "data" : "s.empty()"
+                }
+            ],
+            "outputs" : [
+            ]
+        },
+        {
+            "name" : "s.add(i)",
+            "blocktype" : "Var",
+            "datatype" : "",
+            "data" : ""
+        },
+        {
+            "name" : "",
+            "blocktype" : "Var",
+            "datatype" : "",
+            "data" : ""
+        },
+        {
+            "name" : "res.add",
+            "blocktype" : "FunctCall",
+            "inputs" : [
+                {
+                    "name" : "",
+                    "blocktype" : "Var",
+                    "datatype" : "",
+                    "data" : "s"
+                }
+            ],
+            "outputs" : [
+            ]
+        },
+        {
+            "name" : ";",
+            "blocktype" : "Var",
+            "datatype" : "",
+            "data" : ""
+        },
+        {
+            "name" : ";",
+            "blocktype" : "Var",
+            "datatype" : "",
+            "data" : ""
+        }
+    ]
+}

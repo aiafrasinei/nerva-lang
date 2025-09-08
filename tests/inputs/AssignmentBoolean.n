@@ -1,0 +1,2 @@
+test_b = true
+var_b = false

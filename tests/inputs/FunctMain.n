@@ -1,0 +1,6 @@
+main_f = , argv_t , _i ,
+    println "Hello world!"
+    ret 0
+;
+
+main argv

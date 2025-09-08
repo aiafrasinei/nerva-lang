@@ -20,6 +20,9 @@ public class ParserUtils {
                     ret.add(s);
                 }
             }
+            if(text.endsWith("\"\"")) {
+                ret.add("");
+            }
         } else {
             Collections.addAll(ret, text.split(" "));
         }
@@ -36,21 +39,44 @@ public class ParserUtils {
         return ret.toString();
     }
 
-    public static boolean isTypeAnnotation(char c) {
+    public static boolean isStandardTypeAnnotation(char c) {
         boolean ret = false;
-        if(c == 's' || c == 'i' || c == 'r' || c == 't' || c == 'f') {
+        if(c == 's' || c == 'i' || c == 'b' || c == 'r' || c == 't' || c == 'f') {
             ret = true;
         }
         return ret;
     }
 
-    static char getAnnotationChar(String token) {
+    public static char getAnnotationChar(String token) {
+        char retch = '0';
+
         int underscoreIndex = token.indexOf('_');
-        return token.charAt(underscoreIndex + 1);
+        if ((underscoreIndex+2) == token.length()) {
+            retch = token.charAt(underscoreIndex + 1);
+        }
+
+        return retch;
     }
 
-    static String getVarName(String token) {
+    public static String getAnnotationString(String token) {
+        int underscoreIndex = token.indexOf('_');
+        return token.substring(underscoreIndex+1);
+    }
+
+    public static String getVarName(String token) {
         int underscoreIndex = token.indexOf('_');
         return token.substring(0, underscoreIndex);
+    }
+
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
     }
 }

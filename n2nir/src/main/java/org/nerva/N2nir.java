@@ -14,7 +14,7 @@ import static org.nerva.ParserUtils.splitSpecial;
 
 
 public class N2nir {
-    static class LineData {
+    public static class LineData {
         public String line;
         public List<String> tokens;
 
@@ -56,6 +56,9 @@ public class N2nir {
             //initialize linesData
             List<LineData> linesData = new ArrayList<>();
             for(String line : lines) {
+                if (line.isEmpty()) {
+                    continue;
+                }
                 line = line.trim();
                 linesData.add(new LineData(line, splitSpecial(line)));
             }

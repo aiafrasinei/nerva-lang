@@ -11,15 +11,6 @@
 }
 ```
 
-## BLOCK
-
-```json
-{
-    "name" : "",
-    "blocktype" : "Block",
-}
-```
-
 ## VARIABLE DECLARATION, ASSIGNMENT , FUNCTION CALL PARAMETER
 
 ```json
@@ -53,3 +44,7 @@
     "outputs" : []
 }
 ```
+
+### NOTES
+
+* for variables "data" : "" means default initialized variable

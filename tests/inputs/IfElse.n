@@ -1,11 +1,7 @@
 i_i = 3
 
-
 if i < 10
-    test_i = 3
     println "Less then 10"
-elseif i < 5
-    println "Less then 5"
 else
     println "Greater then 10"
 ;

@@ -1,0 +1,5 @@
+i_i = 3
+
+if i < 10
+    println "Less then 10"
+;

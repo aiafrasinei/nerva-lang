@@ -2,18 +2,23 @@
 
 ## function declaration
 
-[name]_f = , intput_[type] , output_[type] ,
+[name]_f , intput_[type] , output_[type] ,
+    [code]
     ret output
 ;
 
 ```nerva
-main_f = , argv_t , _i ,
+main_f , argv_t , _i ,
     println "Hello world!"
     ret 0
 ;
 
-sum_f = , a_i b_i , _i ,
+sum_f , a_i b_i , _i ,
     ret a + b
+;
+
+extrapolate_f , , ,
+    test_i
 ;
 ```
 
@@ -22,11 +27,12 @@ sum_f = , a_i b_i , _i ,
 ```nerva
 main argv
 sum , 2 3 ,
+extrapolate
 ```
 
 point2d x_r y_r
-points = , 2 3 , 4 5 ,
-sum_f = , a_point2d , _point2d ,
+points , 2 3 , 4 5 ,
+sum_f , a_point2d , _point2d ,
     ret , a[0].x + a[0].y , a[1].x + a[1].x ,
 ;
 
