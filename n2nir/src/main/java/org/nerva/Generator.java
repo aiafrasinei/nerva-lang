@@ -1,6 +1,8 @@
 package org.nerva;
 
 import java.io.PrintWriter;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import static org.nerva.ParserUtils.*;
@@ -12,7 +14,8 @@ public class Generator {
     public static void genProgramStart(PrintWriter outp, String inf) {
         outp.printf("%s{\n", indentString(globalIndentLevel));
         globalIndentLevel++;
-        outp.printf("%s\"name\" : \"%s\",\n" , indentString(globalIndentLevel), inf);
+        Path infPath = Paths.get(inf);
+        outp.printf("%s\"name\" : \"%s\",\n" , indentString(globalIndentLevel), infPath.getFileName().toString());
         outp.printf("%s\"data\" : [\n", indentString(globalIndentLevel));
         globalIndentLevel++;
     }

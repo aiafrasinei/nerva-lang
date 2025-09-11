@@ -7,4 +7,5 @@
   * sqlite3 - sqlite3 info
 * examples
 * n2nir - convert nerva source to nir
+* nerva - nerva repl
 * tests

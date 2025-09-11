@@ -11,6 +11,8 @@ id = 330
 
 angle_r = 4.0
 
+str_s = "t"
+
 str = "text"
 ```
 

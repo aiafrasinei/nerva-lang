@@ -28,7 +28,6 @@ extrapolate_f , , ,
 main argv
 sum , 2 3 ,
 extrapolate
-```
 
 point2d x_r y_r
 points , 2 3 , 4 5 ,
@@ -37,3 +36,9 @@ sum_f , a_point2d , _point2d ,
 ;
 
 sum points
+```
+
+## notes
+
+Function params have type annotations.
+Params are accessed without annotations inside the function.

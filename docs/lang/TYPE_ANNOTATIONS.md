@@ -1,8 +1,9 @@
 # DATA ANNOTATIONS
 
-name_type
+name_[type]
 
-types:
+## types
+
 ```nerva
 _i - integer
 _b - boolean
