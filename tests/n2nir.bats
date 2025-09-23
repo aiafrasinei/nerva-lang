@@ -62,6 +62,16 @@ setup() {
     jq empty out
 }
 
+@test "FunctDeclMultipleInputs" {
+    run -0 java -cp $DIR/../n2nir/target/classes org.nerva.N2nir $DIR/inputs/n2nir/FunctDeclMultipleInputs.n out
+    jq empty out
+}
+
+@test "FunctDeclWhitspacesDontMatter" {
+    run -0 java -cp $DIR/../n2nir/target/classes org.nerva.N2nir $DIR/inputs/n2nir/FunctDeclWhitspacesDontMatter.n out
+    jq empty out
+}
+
 @test "FunctDeclNoParamsRet" {
     run -0 java -cp $DIR/../n2nir/target/classes org.nerva.N2nir $DIR/inputs/n2nir/FunctDeclNoParamsRet.n out
     jq empty out

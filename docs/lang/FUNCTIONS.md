@@ -1,11 +1,13 @@
-# FUNCTIONS
+# Functions
 
 ## function declaration
 
+```nerva
 [name]_f , intput_[type] , output_[type] ,
     [code]
     ret output
 ;
+```
 
 ```nerva
 main_f , argv_t , _i ,

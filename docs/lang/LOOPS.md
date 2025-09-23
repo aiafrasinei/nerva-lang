@@ -1,4 +1,4 @@
-# LOOPS
+# Loops
 
 ## just one type of for
 

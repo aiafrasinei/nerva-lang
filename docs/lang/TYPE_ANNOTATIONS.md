@@ -1,6 +1,8 @@
-# DATA ANNOTATIONS
+# Type annotations
 
+```nerva
 name_[type]
+```
 
 ## types
 

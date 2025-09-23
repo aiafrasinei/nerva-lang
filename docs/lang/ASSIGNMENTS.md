@@ -1,4 +1,4 @@
-# ASSIGNMENT
+# Assignment
 
 = is the assignment operator
 

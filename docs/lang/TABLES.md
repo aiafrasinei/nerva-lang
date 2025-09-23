@@ -1,4 +1,4 @@
-# TABLES
+# Tables
 
 check the NDF documentation:
 

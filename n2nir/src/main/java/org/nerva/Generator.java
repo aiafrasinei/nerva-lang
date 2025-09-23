@@ -3,6 +3,7 @@ package org.nerva;
 import java.io.PrintWriter;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Collections;
 import java.util.List;
 
 import static org.nerva.ParserUtils.*;
@@ -98,8 +99,7 @@ public class Generator {
         "name" : "",
         "blocktype" : "FunctDef",
         "inputs" : [],
-        "outputs" : [],
-        "code" : []
+        "outputs" : []
     }*/
     public static void genFunctDef(PrintWriter outp, N2nir.LineData data, int indentLevel) {
         outp.printf("%s{\n", indentString(indentLevel));
@@ -162,14 +162,38 @@ public class Generator {
 
     }
 
-    public static void genFunctionDeclaration(PrintWriter outp, N2nir.LineData data, int indentLevel) {
-        //TODO ALEX - add inputs
-        String firstToken = data.tokens.getFirst();
+    public static void genFunctionDeclaration(PrintWriter outp, N2nir.LineData lineData, int indentLevel) {
+        String firstToken = lineData.tokens.getFirst();
         outp.printf("%s{\n", indentString(indentLevel));
         indentLevel++;
         outp.printf("%s\"name\" : \"%s\",\n" , indentString(indentLevel), getVarName(firstToken));
         outp.printf("%s\"blocktype\" : \"%s\",\n" , indentString(indentLevel), "FunctDef");
         outp.printf("%s\"inputs\" : [\n", indentString(indentLevel));
+
+        indentLevel++;
+        int countParams = 0;
+        for(int i=1;i<lineData.tokens.size(); i++) {
+            if(i == lineData.tokens.size()-2) {
+                globalLast = true;
+            }
+
+            if (i == 1) {
+                if(!lineData.tokens.get(i).equals(",")) {
+                    throw new RuntimeException("ERR - Wrong syntax for function declaration");
+                }
+            }
+            if(Collections.frequency(lineData.tokens, ",") != 3) {
+                throw new RuntimeException("ERR - Wrong syntax for function declaration");
+            }
+
+            if(!lineData.tokens.get(i).equals(",")) {
+                genFunctCallParam(outp, lineData.tokens.get(i), indentLevel);
+                countParams++;
+            }
+            globalLast = false;
+        }
+        indentLevel--;
+
         outp.printf("%s],\n", indentString(indentLevel));
         outp.printf("%s\"outputs\" : [\n", indentString(indentLevel));
         outp.printf("%s]\n", indentString(indentLevel));

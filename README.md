@@ -8,4 +8,5 @@
 * examples
 * n2nir - convert nerva source to nir
 * nerva - nerva repl
+* nir2java - convert nir to java
 * tests

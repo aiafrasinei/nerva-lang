@@ -1,4 +1,4 @@
-# CONDITIONALS
+# Conditionals
 
 ```nerva
 if i < 10

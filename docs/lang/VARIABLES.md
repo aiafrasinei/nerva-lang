@@ -1,8 +1,10 @@
-# VARIABLES
+# Variables
 
+```nerva
 name_[type] = [value]
 
 name_[type]
+```
 
 ## variable declaration
 
