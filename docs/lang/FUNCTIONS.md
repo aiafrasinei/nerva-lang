@@ -3,7 +3,7 @@
 ## function declaration
 
 ```nerva
-[name]_f , intput_[type] , output_[type] ,
+[name]_f , intput_[type] ... , output_[type] ,
     [code]
     ret output
 ;
@@ -42,5 +42,5 @@ sum points
 
 ## notes
 
-Function params have type annotations.
-Params are accessed without annotations inside the function.
+* Function params have type annotations.
+* Params are accessed without annotations inside the function.

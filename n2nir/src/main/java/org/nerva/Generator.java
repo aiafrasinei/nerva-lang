@@ -75,7 +75,26 @@ public class Generator {
                 outp.printf("%s\"data\" : \"%s\"\n", indentString(indentLevel), data);
             }
         } else {
-            outp.printf("%s\"data\" : \"%s\"\n", indentString(indentLevel), data);
+            //default init
+            if(annotationChar == 'b' ) {
+                if(!data.equals("true") && !data.equals("false") && !data.isEmpty()) {
+                    throw new RuntimeException("ERR - Wrong boolean assignment must be true or false");
+                }
+
+                outp.printf("%s\"data\" : %b\n", indentString(indentLevel), false);
+            } else if(annotationChar == 'i') {
+                if(!data.isEmpty()) {
+                    throw new RuntimeException("ERR - Wrong integer assignment");
+                }
+                outp.printf("%s\"data\" : %d\n", indentString(indentLevel), 0);
+            } else if(annotationChar == 'r') {
+                if(!data.isEmpty()) {
+                    throw new RuntimeException("ERR - Wrong real assignment");
+                }
+                outp.printf("%s\"data\" : %f\n", indentString(indentLevel), 0.0);
+            } else {
+                outp.printf("%s\"data\" : \"%s\"\n", indentString(indentLevel), data);
+            }
         }
 
         indentLevel--;
