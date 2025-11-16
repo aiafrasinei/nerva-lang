@@ -121,3 +121,8 @@ setup() {
     run -0 java -cp $DIR/../n2nir/target/classes org.nerva.N2nir $DIR/inputs/examples/FizzBuzz.n out
     jq empty out
 }
+
+@test "AssignmentFunction" {
+    run -0 java -cp $DIR/../n2nir/target/classes org.nerva.N2nir $DIR/inputs/n2nir/AssignmentFunction.n out
+    jq empty out
+}

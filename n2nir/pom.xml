@@ -6,7 +6,7 @@
 
     <groupId>org.nerva</groupId>
     <artifactId>n2nir</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -14,4 +14,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+<dependencies>
+      <dependency>
+          <groupId>org.nerva</groupId>
+          <artifactId>nerva-common</artifactId>
+          <version>0.1-SNAPSHOT</version>
+      </dependency>
+    </dependencies>
 </project>

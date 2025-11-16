@@ -67,13 +67,16 @@ public class Generator {
         }
 
         if(ParserUtils.isNumeric(data)) {
-            if(annotationChar == 'i') {
+            if (annotationChar == 'i') {
                 outp.printf("%s\"data\" : %d\n", indentString(indentLevel), Integer.parseInt(data));
-            } else if(annotationChar == 'r') {
+            } else if (annotationChar == 'r') {
                 outp.printf("%s\"data\" : %f\n", indentString(indentLevel), Double.parseDouble(data));
             } else {
                 outp.printf("%s\"data\" : \"%s\"\n", indentString(indentLevel), data);
             }
+        } else if(!data.isEmpty()) {
+            //function
+            outp.printf("%s\"data\" : \"%s\"\n", indentString(indentLevel), data);
         } else {
             //default init
             if(annotationChar == 'b' ) {
